@@ -90,16 +90,14 @@
     </v-row> -->
     <v-row class="text-center">
       <v-col cols="6">
-        <h1 class="display-2 font-weight-bold mb-2">
-          Hà Nội
-        </h1>
+        <h1 class="display-2 font-weight-bold mb-2">Hà Nội</h1>
         <h1>Nhiệt độ : 20</h1>
         <h1>Độ Ẩm: 80%</h1>
         <h1>Tốc độ gió: 14km/h</h1>
         <h1>Khả năng mưa : 90%</h1>
       </v-col>
       <v-col cols="6">
-        <body>
+        <v-card class="body" style="background-color:#010a3d;">
           <div class="layer-1">
             <div class="rain-drop"></div>
             <div class="rain-drop"></div>
@@ -117,7 +115,7 @@
             <div class="rain-drop"></div>
             <div class="rain-drop"></div>
           </div>
-        </body>
+        </v-card>
       </v-col>
 
     </v-row>
@@ -184,12 +182,13 @@ export default {
 };
 </script>
 <style scoped>
-body {
+.body {
   background-color: #010a3d;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
+
 .rain-drop {
   position: fixed;
   top: -100px;
@@ -264,4 +263,5 @@ body {
     top: 100vh;
   }
 }
+
 </style>

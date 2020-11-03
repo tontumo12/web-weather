@@ -36,7 +36,7 @@
       </div>
 
       <v-spacer></v-spacer>
-
+      <router-link to="/login">
       <v-btn
         href="https://github.com/vuetifyjs/vuetify/releases/latest"
         target="_blank"
@@ -45,6 +45,7 @@
         <span class="mr-2">Login</span>
         <v-icon>mdi-login</v-icon>
       </v-btn>
+      </router-link>
     </v-app-bar>
 
     <v-main>
