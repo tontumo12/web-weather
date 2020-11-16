@@ -97,11 +97,11 @@
         <h1>Khả năng mưa : 90%</h1>
       </v-col>
       <v-col cols="6">
-        <v-card class = "body" style="background-color: black;">
+        <v-card class="body" style="background-color: black;">
           <div class="snowflake">  ❅  </div>
-          <div class="snowflake">  ❆  </div>
-          <div class="snowflake">  ❅  </div>
-          <div class="snowflake">  ❆  </div>
+  <div class="snowflake">  ❆  </div>
+  <div class="snowflake">  ❅  </div>
+  <div class="snowflake">  ❆  </div>
         </v-card>
       </v-col>
 
@@ -110,107 +110,112 @@
 </template>
 
 <script>
-export default {
-  name: "HelloWorld",
+  export default {
+    name: "HelloWorld",
 
-  data: () => ({
-    ecosystem: [
-      {
-        text: "vuetify-loader",
-        href: "https://github.com/vuetifyjs/vuetify-loader",
-      },
-      {
-        text: "github",
-        href: "https://github.com/vuetifyjs/vuetify",
-      },
-      {
-        text: "awesome-vuetify",
-        href: "https://github.com/vuetifyjs/awesome-vuetify",
-      },
-    ],
-    importantLinks: [
-      {
-        text: "Documentation",
-        href: "https://vuetifyjs.com",
-      },
-      {
-        text: "Chat",
-        href: "https://community.vuetifyjs.com",
-      },
-      {
-        text: "Made with Vuetify",
-        href: "https://madewithvuejs.com/vuetify",
-      },
-      {
-        text: "Twitter",
-        href: "https://twitter.com/vuetifyjs",
-      },
-      {
-        text: "Articles",
-        href: "https://medium.com/vuetify",
-      },
-    ],
-    whatsNext: [
-      {
-        text: "Explore components",
-        href: "https://vuetifyjs.com/components/api-explorer",
-      },
-      {
-        text: "Select a layout",
-        href: "https://vuetifyjs.com/getting-started/pre-made-layouts",
-      },
-      {
-        text: "Frequently Asked Questions",
-        href:
-          "https://vuetifyjs.com/getting-started/frequently-asked-questions",
-      },
-    ],
-  }),
-};
+    data: () => ({
+      ecosystem: [
+        {
+          text: "vuetify-loader",
+          href: "https://github.com/vuetifyjs/vuetify-loader",
+        },
+        {
+          text: "github",
+          href: "https://github.com/vuetifyjs/vuetify",
+        },
+        {
+          text: "awesome-vuetify",
+          href: "https://github.com/vuetifyjs/awesome-vuetify",
+        },
+      ],
+      importantLinks: [
+        {
+          text: "Documentation",
+          href: "https://vuetifyjs.com",
+        },
+        {
+          text: "Chat",
+          href: "https://community.vuetifyjs.com",
+        },
+        {
+          text: "Made with Vuetify",
+          href: "https://madewithvuejs.com/vuetify",
+        },
+        {
+          text: "Twitter",
+          href: "https://twitter.com/vuetifyjs",
+        },
+        {
+          text: "Articles",
+          href: "https://medium.com/vuetify",
+        },
+      ],
+      whatsNext: [
+        {
+          text: "Explore components",
+          href: "https://vuetifyjs.com/components/api-explorer",
+        },
+        {
+          text: "Select a layout",
+          href: "https://vuetifyjs.com/getting-started/pre-made-layouts",
+        },
+        {
+          text: "Frequently Asked Questions",
+          href:
+            "https://vuetifyjs.com/getting-started/frequently-asked-questions",
+        },
+      ],
+    }),
+  };
 </script>
 <style scoped>
-  .body {
-  background-color: #010a3d;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+.body {
+  background-color: #e3c498;
 }
-.snowflake {
-  color: #fff;
-  font-size: 1em;
-  font-family: Arial, sans-serif;
-  text-shadow: 0 0 5px #000;
-/* Để  tuyết luôn rơi trên màn hình và không bị ảnh hưởng, set position fixed*/
-  position: fixed;
-  z-index: 999; /* cho chắc =)) */
-/* tuyết cần rơi từ điểm bắt đầu nằm trên cái màn hình */
-  top: -10%;
+.sun {
+  width: 100px;
+  position: absolute;
+  transform: rotate(0) translateX(-150px);
 }
-.snowflake {
-  color: #fff;
-  font-size: 1em;
-  font-family: Arial, sans-serif;
-  text-shadow: 0 0 5px #000;
-/* Để  tuyết luôn rơi trên màn hình và không bị ảnh hưởng, set position fixed*/
-  position: fixed;
-  z-index: 999; /* cho chắc =)) */
-/* tuyết cần rơi từ điểm bắt đầu nằm trên cái màn hình */
-  top: -10%;
+.item-1 {
+  bottom: 50%;
+  left: 25%;
+  animation: rot 5s linear infinite;  
 }
-@keyframes snowflakes-fall {
-  0% {
-    top: -10%
+.item-2 {
+  bottom: 50%;
+  left: 75%;
+  transform: rotate(0) translateX(-150px);
+  animation: rise 5s linear infinite;  
+}
+.item-3 {
+  bottom: 20%;
+  left: 50%;
+  transform-origin: 150% 150%;
+  animation: fail 5s linear infinite; 
+}
+@keyframes rot {
+  from {
+    transform: rotate(0) translateX(-150px);
   }
-  100% {
-    top: 100%
+  to {
+    transform: rotate(360deg) translateX(-150px);
   }
 }
-@keyframes snowflakes-shake {
-  0%, 100% {
-    transform: translateX(0);
+@keyframes rise {
+  from {
+    transform: rotate(0) translateX(-150px) rotate(0);
   }
-  50% {
-    transform: translateX(80px);
+  to {
+    transform: rotate(360deg) translateX(-150px) rotate(-360deg);
+  }
+}
+@keyframes fail {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 </style>
