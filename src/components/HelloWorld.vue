@@ -90,31 +90,18 @@
     </v-row> -->
     <v-row class="text-center">
       <v-col cols="6">
-        <h1 class="display-2 font-weight-bold mb-2">Hà Nội</h1>
-        <h1>Nhiệt độ : 20</h1>
-        <h1>Độ Ẩm: 80%</h1>
-        <h1>Tốc độ gió: 14km/h</h1>
+        <h1 class="display-2 font-weight-bold mb-2">Đà Nẵng</h1>
+        <h1>Nhiệt độ : 26</h1>
+        <h1>Độ Ẩm: 90%</h1>
+        <h1>Tốc độ gió: 30km/h</h1>
         <h1>Khả năng mưa : 90%</h1>
       </v-col>
       <v-col cols="6">
-        <v-card class="body" style="background-color:#010a3d;">
-          <div class="layer-1">
-            <div class="rain-drop"></div>
-            <div class="rain-drop"></div>
-            <div class="rain-drop"></div>
-            <div class="rain-drop"></div>
-            <div class="rain-drop"></div>
-            <div class="rain-drop"></div>
-            <div class="rain-drop"></div>
-            <div class="rain-drop"></div>
-            <div class="rain-drop"></div>
-            <div class="rain-drop"></div>
-            <div class="rain-drop"></div>
-            <div class="rain-drop"></div>
-            <div class="rain-drop"></div>
-            <div class="rain-drop"></div>
-            <div class="rain-drop"></div>
-          </div>
+        <v-card class = "body" style="background-color: black;">
+          <div class="snowflake">  ❅  </div>
+          <div class="snowflake">  ❆  </div>
+          <div class="snowflake">  ❅  </div>
+          <div class="snowflake">  ❆  </div>
         </v-card>
       </v-col>
 
@@ -182,86 +169,48 @@ export default {
 };
 </script>
 <style scoped>
-.body {
+  .body {
   background-color: #010a3d;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-
-.rain-drop {
+.snowflake {
+  color: #fff;
+  font-size: 1em;
+  font-family: Arial, sans-serif;
+  text-shadow: 0 0 5px #000;
+/* Để  tuyết luôn rơi trên màn hình và không bị ảnh hưởng, set position fixed*/
   position: fixed;
-  top: -100px;
-  width: 1px;
-  height: 100px;
-  background-image: linear-gradient(to bottom, transparent, white);
+  z-index: 999; /* cho chắc =)) */
+/* tuyết cần rơi từ điểm bắt đầu nằm trên cái màn hình */
+  top: -10%;
 }
-.rain-drop:nth-child(2) {
-  left: 10%;
-  animation: rainFall 0.8s linear 2s infinite;
+.snowflake {
+  color: #fff;
+  font-size: 1em;
+  font-family: Arial, sans-serif;
+  text-shadow: 0 0 5px #000;
+/* Để  tuyết luôn rơi trên màn hình và không bị ảnh hưởng, set position fixed*/
+  position: fixed;
+  z-index: 999; /* cho chắc =)) */
+/* tuyết cần rơi từ điểm bắt đầu nằm trên cái màn hình */
+  top: -10%;
 }
-.rain-drop:nth-child(3) {
-  left: 15%;
-  animation: rainFall 0.7s linear 1s infinite;
-}
-.rain-drop:nth-child(4) {
-  left: 35%;
-  animation: rainFall 0.7s linear 0.1s infinite;
-}
-.rain-drop:nth-child(5) {
-  left: 65%;
-  animation: rainFall 0.7s linear 0.3s infinite;
-}
-.rain-drop:nth-child(6) {
-  left: 80%;
-  animation: rainFall 0.8s linear 0.9s infinite;
-}
-.rain-drop:nth-child(7) {
-  left: 90%;
-  animation: rainFall 0.6s linear 1.1s infinite;
-}
-.rain-drop:nth-child(8) {
-  left: 82%;
-  animation: rainFall 0.7s linear 0.4s infinite;
-}
-.rain-drop:nth-child(9) {
-  left: 95%;
-  animation: rainFall 0.7s linear 1s infinite;
-}
-.rain-drop:nth-child(10) {
-  left: 53%;
-  animation: rainFall 0.8s linear 0.5s infinite;
-}
-.rain-drop:nth-child(11) {
-  left: 45%;
-  animation: rainFall 0.8s linear 0.5s infinite;
-}
-.rain-drop:nth-child(12) {
-  left: 5%;
-  animation: rainFall 0.8s linear 0.2s infinite;
-}
-.rain-drop:nth-child(13) {
-  left: 33%;
-  animation: rainFall 0.8s linear 0.65s infinite;
-}
-.rain-drop:nth-child(14) {
-  left: 66%;
-  animation: rainFall 0.7s linear 0.35s infinite;
-}
-.rain-drop:nth-child(15) {
-  left: 53%;
-  animation: rainFall 0.8s linear 0.2s infinite;
-}
-@keyframes rainFall {
+@keyframes snowflakes-fall {
   0% {
-    top: -100px;
-  }
-  50% {
-    top: 100vh;
+    top: -10%
   }
   100% {
-    top: 100vh;
+    top: 100%
   }
 }
-
+@keyframes snowflakes-shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(80px);
+  }
+}
 </style>
