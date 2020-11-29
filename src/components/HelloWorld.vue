@@ -180,19 +180,19 @@
 .item-1 {
   bottom: 50%;
   left: 25%;
-  animation: rot 5s linear infinite;  
+  animation: rot 5s linear infinite;
 }
 .item-2 {
   bottom: 50%;
   left: 75%;
   transform: rotate(0) translateX(-150px);
-  animation: rise 5s linear infinite;  
+  animation: rise 5s linear infinite;
 }
 .item-3 {
   bottom: 20%;
   left: 50%;
   transform-origin: 150% 150%;
-  animation: fail 5s linear infinite; 
+  animation: fail 5s linear infinite;
 }
 @keyframes rot {
   from {
