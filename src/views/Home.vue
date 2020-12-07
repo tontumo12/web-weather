@@ -73,7 +73,19 @@
     :items="desserts"
     item-key="time"
     class="elevation-1"
-  ></v-data-table>
+  >
+  <template v-slot:top>
+    <v-spacer></v-spacer>
+    <v-btn
+              color="primary"
+              dark
+              class="mb-2"
+              @click="hour = false"
+            >
+              New Item
+            </v-btn>
+  </template>
+    </v-data-table>
     </v-card>
   </v-container>
 </template>
