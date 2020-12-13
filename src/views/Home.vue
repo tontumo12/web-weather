@@ -51,22 +51,34 @@
         <!-- hiệu ứng thời tiết -->
         <v-col cols="6">
           <!-- hiệu ứng nắng -->
-          <v-card class="body" style="background-color: rgb(23, 188, 238)">
+          <v-card class="body" style="background-color: rgb(23, 188, 238)" v-if="hot == true">
             <div class="hot">
               <span class="sun"></span>
               <span class="sunx"></span>
             </div>
           </v-card>
           <!-- hiệu ứng mây -->
-          <!-- <v-card class="body" style="background-color: #fff">
-            <div class="hot">
-              <span class="sun"></span>
-              <span class="sunx"></span>
-            </div>
+          <v-card class="body" style="background-color: #fff" v-if="cloudy == true">
             <div class="cloudy">
               <span class="cloud"></span>
               <span class="cloudx"></span>
             </div>
+          </v-card>
+          <!-- hiệu ứng tuyết -->
+          <v-card class="body" style="background-color: #fff" v-if="snow == true">
+            <div class="breezy">
+              <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+              <span class="cloudr"></span>
+            </div>
+          </v-card>
+          <!-- hiệu ứng mưa -->
+          <v-card class="body" style="background-color: #fff" v-if="rain == true">
             <div class="stormy">
               <ul>
                 <li></li>
@@ -83,16 +95,9 @@
               <span class="stick"></span>
               <span class="stick2"></span>
             </div>
-            <div class="breezy">
-              <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-              </ul>
-              <span class="cloudr"></span>
-            </div>
+          </v-card>
+          <!-- hiệu ứng tối -->
+          <v-card class="body" style="background-color: #fff" v-if="night == true">
             <div class="night">
               <span class="moon"></span>
               <span class="spot1"></span>
@@ -105,7 +110,7 @@
                 <li></li>
               </ul>
             </div>
-          </v-card> -->
+          </v-card>
         </v-col>
       </v-row>
     </v-card>
@@ -263,7 +268,7 @@ export default {
   );
   box-shadow: 1px 1px 30px rgba(255, 111, 0, 1);
 }
-/* .sun {
+.sun {
   position: absolute;
   left: 30%;
   width: 200px;
@@ -623,5 +628,5 @@ export default {
     top: 75%;
     opacity: 0;
   }
-}*/
+}
 </style>
