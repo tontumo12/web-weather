@@ -43,12 +43,12 @@
           <h1>Nhiệt độ : {{ NhietDo }} °C</h1>
           <h1>Độ Ẩm: {{ humidity }} %</h1>
           <h1>Tốc độ gió: {{ wind }} km/h</h1>
-          <h1>Khả năng mưa : {{ rain }} %</h1>
-          <v-btn depressed color="primary" @click="hour = true">
-            Xem theo giờ
+          <h1>Khả năng mưa : {{ mưa }} %</h1>
+          <v-btn depressed color="primary" @click="ButtonHour()">
+            Theo giờ
           </v-btn>
-          <v-btn depressed color="primary" @click="day = true">
-            Xem theo ngày
+          <v-btn depressed color="primary" @click="ButtonDay()">
+            Theo ngày
           </v-btn>
         </v-col>
         <!-- hiệu ứng thời tiết -->
@@ -120,33 +120,36 @@
     <v-divider></v-divider>
     <v-divider></v-divider>
     <v-divider></v-divider>
+    <!-- hiển thị nhiệt độ theo giờ -->
     <v-card v-if="hour == true">
       <v-data-table
         dense
-        :headers="headers1"
-        :items="desserts1"
+        :headers="headers"
+        :items="desserts"
         item-key="time"
         class="elevation-1"
       >
         <template v-slot:top>
           <v-spacer></v-spacer>
           <v-btn color="primary" dark class="mb-2" @click="hour = false">
-            close
+            CLose
           </v-btn>
         </template>
       </v-data-table>
     </v-card>
+    <!-- hiển thị nhiệt độ theo ngày -->
     <v-card v-if="day == true">
       <v-data-table
-      :headers="headers"
-      :items="desserts"
-      :items-per-page="5"
-      class="elevation-1"
+        dense
+        :headers="headers_day"
+        :items="desserts_day"
+        item-key="day"
+        class="elevation-1"
       >
         <template v-slot:top>
           <v-spacer></v-spacer>
           <v-btn color="primary" dark class="mb-2" @click="day = false">
-            close
+            CLose
           </v-btn>
         </template>
       </v-data-table>
@@ -161,13 +164,18 @@ export default {
   data: () => ({
     city: "Hà nội",
     NhietDo: 30,
-    rain: 50,
+    mưa: 50,
     wind: 30,
     cloud: false,
     humidity: 60,
     hour: false,
-    day: false,
-    desserts1: [
+    day:false,
+    snow:false,
+    hot:true,
+    cloudy: false,
+    rain:false,
+    night:false,
+    desserts: [
       {
         time: "1 am",
         temperature: 159,
@@ -239,114 +247,117 @@ export default {
         chance_rain: 7,
       },
     ],
-    headers1: [
+    headers: [
       {
         text: "Thời gian",
         align: "start",
         sortable: false,
         value: "time",
       },
-      { text: "Nhiệt độ", value: "temperature" },
-      { text: "Độ ẩm", value: "humidity" },
-      { text: "Tốc độ gió", value: "wind" },
-      { text: "Khả năng mưa", value: "chance_rain" },
+      { text: "Nhiệt độ (°C)", value: "temperature" },
+      { text: "Độ ẩm (%)", value: "humidity" },
+      { text: "Tốc độ gió (Km/h)", value: "wind" },
+      { text: "Khả năng mưa (%)", value: "chance_rain" },
     ],
-    headers: [
-          {
-            text: 'Dessert (100g serving)',
-            align: 'start',
-            sortable: false,
-            value: 'name',
-          },
-          { text: 'Calories', value: 'calories' },
-          { text: 'Fat (g)', value: 'fat' },
-          { text: 'Carbs (g)', value: 'carbs' },
-          { text: 'Protein (g)', value: 'protein' },
-          { text: 'Iron (%)', value: 'iron' },
-        ],
-        desserts: [
-          {
-            name: 'Frozen Yogurt',
-            calories: 159,
-            fat: 6.0,
-            carbs: 24,
-            protein: 4.0,
-            iron: '1%',
-          },
-          {
-            name: 'Ice cream sandwich',
-            calories: 237,
-            fat: 9.0,
-            carbs: 37,
-            protein: 4.3,
-            iron: '1%',
-          },
-          {
-            name: 'Eclair',
-            calories: 262,
-            fat: 16.0,
-            carbs: 23,
-            protein: 6.0,
-            iron: '7%',
-          },
-          {
-            name: 'Cupcake',
-            calories: 305,
-            fat: 3.7,
-            carbs: 67,
-            protein: 4.3,
-            iron: '8%',
-          },
-          {
-            name: 'Gingerbread',
-            calories: 356,
-            fat: 16.0,
-            carbs: 49,
-            protein: 3.9,
-            iron: '16%',
-          },
-          {
-            name: 'Jelly bean',
-            calories: 375,
-            fat: 0.0,
-            carbs: 94,
-            protein: 0.0,
-            iron: '0%',
-          },
-          {
-            name: 'Lollipop',
-            calories: 392,
-            fat: 0.2,
-            carbs: 98,
-            protein: 0,
-            iron: '2%',
-          },
-          {
-            name: 'Honeycomb',
-            calories: 408,
-            fat: 3.2,
-            carbs: 87,
-            protein: 6.5,
-            iron: '45%',
-          },
-          {
-            name: 'Donut',
-            calories: 452,
-            fat: 25.0,
-            carbs: 51,
-            protein: 4.9,
-            iron: '22%',
-          },
-          {
-            name: 'KitKat',
-            calories: 518,
-            fat: 26.0,
-            carbs: 65,
-            protein: 7,
-            iron: '6%',
-          },
-        ],
+    desserts_day: [
+        {
+          day: '19/12',
+          temperature_day: 159,
+          chance_rain_day: 6.0,
+          humidity_day: 24,
+          wind_day: 4.0,
+        },
+        {
+          day: '20/12',
+          temperature_day: 237,
+          chance_rain_day: 9.0,
+          humidity_day: 37,
+          wind_day: 4.3,
+        },
+        {
+          day: '21/12',
+          temperature_day: 262,
+          chance_rain_day: 16.0,
+          humidity_day: 23,
+          wind_day: 6.0,
+        },
+        {
+          day: '22/12',
+          temperature_day: 305,
+          chance_rain_day: 3.7,
+          humidity_day: 67,
+          wind_day: 4.3,
+        },
+        {
+          day: '23/12',
+          temperature_day: 356,
+          chance_rain_day: 16.0,
+          humidity_day: 49,
+          wind_day: 3.9,
+        },
+        {
+          day: '24/12',
+          temperature_day: 375,
+          chance_rain_day: 0.0,
+          humidity_day: 94,
+          wind_day: 0.0,
+        },
+        {
+          day: '25/12',
+          temperature_day: 392,
+          chance_rain_day: 0.2,
+          humidity_day: 98,
+          wind_day: 0,
+        },
+        {
+          day: '26/12',
+          temperature_day: 408,
+          chance_rain_day: 3.2,
+          humidity_day: 87,
+          wind_day: 6.5,
+        },
+        {
+          day: '27/12',
+          temperature_day: 452,
+          chance_rain_day: 25.0,
+          humidity_day: 51,
+          wind_day: 4.9,
+        },
+        {
+          day: '28/12',
+          temperature_day: 518,
+          chance_rain_day: 26.0,
+          humidity_day: 65,
+          wind_day: 7,
+        },
+      ],
+      headers_day: [
+        {
+          text: 'Ngày',
+          align: 'start',
+          sortable: false,
+          value: 'day',
+        },
+        { text: 'Nhiệt độ (°C)', value: 'temperature_day' },
+        { text: 'khả năng mưa (%)', value: 'chance_rain_day' },
+        { text: 'độ ẩm (%)', value: 'humidity_day' },
+        { text: 'Tốc độ gió (Km/h)', value: 'wind_day' },
+      ],
   }),
+  methods: {
+    ButtonHour(){
+      this.hour = true,
+      this.day = false
+      console.log(this.hour)
+      console.log(this.day)
+    },
+    ButtonDay(){
+      this.hour = false,
+      this.day =true
+      console.log(this.day)
+      console.log(this.hour)
+    }
+  },
 };
 </script>
 <style scope>
@@ -371,7 +382,7 @@ export default {
   src: url(https://fonts.gstatic.com/s/raleway/v18/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVvaorCFPrEHJA.woff2) format('woff2');
   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
-.hot {
+ .hot {
   position: absolute;
   top: 10%;
   left: 40%;
