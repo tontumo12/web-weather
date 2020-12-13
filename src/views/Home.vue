@@ -45,18 +45,18 @@
           <h1>Tốc độ gió: {{ wind }} km/h</h1>
           <h1>Khả năng mưa : {{ rain }} %</h1>
           <v-btn depressed color="primary" @click="hour = true">
-            Primary
+            Xem theo giờ
           </v-btn>
         </v-col>
         <!-- hiệu ứng thời tiết -->
         <v-col cols="6">
           <!-- hiệu ứng nắng -->
-          <!-- <v-card class="body" style="background-color: rgb(23, 188, 238)">
+          <v-card class="body" style="background-color: rgb(23, 188, 238)">
             <div class="hot">
               <span class="sun"></span>
               <span class="sunx"></span>
             </div>
-          </v-card> -->
+          </v-card>
           <!-- hiệu ứng mây -->
           <!-- <v-card class="body" style="background-color: #fff">
             <div class="hot">
@@ -123,7 +123,7 @@
         <template v-slot:top>
           <v-spacer></v-spacer>
           <v-btn color="primary" dark class="mb-2" @click="hour = false">
-            New Item
+            close
           </v-btn>
         </template>
       </v-data-table>
@@ -252,7 +252,7 @@ export default {
   src: url(https://fonts.gstatic.com/s/raleway/v18/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVvaorCFPrEHJA.woff2) format('woff2');
   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
-/* .hot {
+.hot {
   position: absolute;
   top: 10%;
   left: 40%;
@@ -262,7 +262,7 @@ export default {
     rgba(251, 140, 0, 1) 100%
   );
   box-shadow: 1px 1px 30px rgba(255, 111, 0, 1);
-} */
+}
 /* .sun {
   position: absolute;
   left: 30%;
