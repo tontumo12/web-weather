@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  wrather-web:
+    build: ./
+    container_name: weather-web
+    restart: always
+    ports:
+      - "1106:1106"
+    command: "npm run serve"
