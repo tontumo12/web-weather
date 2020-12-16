@@ -159,10 +159,10 @@
 
 <script>
 // @ is an alias to /src
-
 export default {
-  data: () => ({
-    city: "Hà nội",
+  data() {
+    return {
+      city: "Hà nội",
     NhietDo: 30,
     mưa: 50,
     wind: 30,
@@ -171,10 +171,10 @@ export default {
     hour: false,
     day:false,
     snow:false,
-    hot:true,
+    hot:false,
     cloudy: false,
     rain:false,
-    night:false,
+    night:true,
     desserts: [
       {
         time: "1 am",
@@ -343,7 +343,8 @@ export default {
         { text: 'độ ẩm (%)', value: 'humidity_day' },
         { text: 'Tốc độ gió (Km/h)', value: 'wind_day' },
       ],
-  }),
+    }
+  },
   methods: {
     ButtonHour(){
       this.hour = true,

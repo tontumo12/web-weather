@@ -1,0 +1,6 @@
+{
+    "short_name": "fireStarter",
+    "name": "weather app",
+    "start_url": "/?utm_source=homescreen",
+    "gcm_sender_id": "1038660838040"
+}
